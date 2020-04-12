@@ -2815,6 +2815,16 @@ sub mysql_stats {
       . " per thread ($myvar{'max_connections'} max threads)";
 
 #tambahan WJR
+
+infoprint "##--------- WJR Server Buffer: ". hr_bytes( $mycalc{'server_buffers'} ) ." ---------## ";
+infoprint "innodb_buffer_pool_size          :".hr_bytes($myvar{'innodb_buffer_pool_size'});
+infoprint "max_tmp_table_size               :".hr_bytes($mycalc{'max_tmp_table_size'});
+infoprint "innodb_additional_mem_pool_size  :".hr_bytes($myvar{'innodb_additional_mem_pool_size'});
+infoprint "innodb_log_buffer_size           :".hr_bytes($myvar{'innodb_log_buffer_size'});
+infoprint "query_cache_size                 :".hr_bytes($myvar{'query_cache_size'});
+infoprint "aria_pagecache_buffer_size       :".hr_bytes($myvar{'aria_pagecache_buffer_size'});
+infoprint "##--------- WJR Server Buffer ---------## ";
+
 infoprint "## WJR per-Connection: ". hr_bytes( $mycalc{'per_thread_buffers'} ). " * ". $myvar{'max_connections'} ." Connections  = ". hr_bytes($mycalc{'per_thread_buffers'}*$myvar{'max_connections'}) ." ##" ;
 infoprint "read_buffer_size       : " .  hr_bytes($myvar{'read_buffer_size'})  ;
 infoprint "read_rnd_buffer_size   : " .  hr_bytes($myvar{'read_rnd_buffer_size'});
