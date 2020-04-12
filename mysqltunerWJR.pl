@@ -2824,15 +2824,15 @@ infoprint "innodb_log_buffer_size           :".hr_bytes($myvar{'innodb_log_buffe
 infoprint "query_cache_size                 :".hr_bytes($myvar{'query_cache_size'});
 infoprint "aria_pagecache_buffer_size       :".hr_bytes($myvar{'aria_pagecache_buffer_size'});
 infoprint "##--------- WJR Server Buffer ---------## ";
-
-infoprint "## WJR per-Connection: ". hr_bytes( $mycalc{'per_thread_buffers'} ). " * ". $myvar{'max_connections'} ." Connections  = ". hr_bytes($mycalc{'per_thread_buffers'}*$myvar{'max_connections'}) ." ##" ;
+infoprint " ";
+infoprint "##-- WJR per-Connection: ". hr_bytes( $mycalc{'per_thread_buffers'} ). " * ". $myvar{'max_connections'} ." Connections  = ". hr_bytes($mycalc{'per_thread_buffers'}*$myvar{'max_connections'}) ." --##" ;
 infoprint "read_buffer_size       : " .  hr_bytes($myvar{'read_buffer_size'})  ;
 infoprint "read_rnd_buffer_size   : " .  hr_bytes($myvar{'read_rnd_buffer_size'});
 infoprint "sort_buffer_size       : " .  hr_bytes($myvar{'sort_buffer_size'});
 infoprint "thread_stack           : " .  hr_bytes($myvar{'thread_stack'});
 infoprint "max_allowed_packet     : " .  hr_bytes($myvar{'max_allowed_packet'});
 infoprint "join_buffer_size       : " .  hr_bytes($myvar{'join_buffer_size'});
-infoprint "---------------- WJR Thread Buffer ----------------------------------" ;
+infoprint "## ------- WJR per-Connection Buffer --------- ##" ;
 #tambahan WJR
 
     infoprint "P_S Max memory usage: " . hr_bytes_rnd( get_pf_memory() );
