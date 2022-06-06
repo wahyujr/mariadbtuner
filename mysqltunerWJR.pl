@@ -2393,7 +2393,7 @@ sub calculations {
           $myvar{'read_rnd_buffer_size'} +
           $myvar{'sort_buffer_size'} +
           $myvar{'thread_stack'} +
-          $myvar{'max_allowed_packet'} +
+##          $myvar{'max_allowed_packet'} +  ##not used for calculation
           $myvar{'join_buffer_size'};
 
 	#infoprint " ";
@@ -2830,10 +2830,14 @@ infoprint "read_buffer_size       : " .  hr_bytes($myvar{'read_buffer_size'})  ;
 infoprint "read_rnd_buffer_size   : " .  hr_bytes($myvar{'read_rnd_buffer_size'});
 infoprint "sort_buffer_size       : " .  hr_bytes($myvar{'sort_buffer_size'});
 infoprint "thread_stack           : " .  hr_bytes($myvar{'thread_stack'});
-infoprint "max_allowed_packet     : " .  hr_bytes($myvar{'max_allowed_packet'});
+##infoprint "max_allowed_packet     : " .  hr_bytes($myvar{'max_allowed_packet'});## not included
 infoprint "join_buffer_size       : " .  hr_bytes($myvar{'join_buffer_size'});
 infoprint "## ------- WJR per-Connection Buffer --------- ##" ;
 #tambahan WJR
+infoprint "------- WJR Total RAM Needed --------- " ;
+infoprint " innodb_buffer_pool_size + key_buffer_size + (max_connections * per-Connection) ";
+infoprint " ".hr_bytes($myvar{'innodb_buffer_pool_size'})." + ".hr_bytes($myvar{'key_buffer_size'})." + (". $myvar{'max_connections'}." * ". hr_bytes($mycalc{'per_thread_buffers'}. " = ".hr_bytes($myvar{'innodb_buffer_pool_size'}+$myvar{'key_buffer_size'}+($mycalc{'per_thread_buffers'}*$myvar{'max_connections'}))." "; 
+infoprint "------- WJR Total RAM Needed --------- " ;
 
     infoprint "P_S Max memory usage: " . hr_bytes_rnd( get_pf_memory() );
     $result{'P_S'}{'memory'} = get_pf_memory();
