@@ -2836,7 +2836,7 @@ infoprint "## ------- WJR per-Connection Buffer --------- ##" ;
 #tambahan WJR
 infoprint "------- WJR Total RAM Needed --------- " ;
 infoprint " innodb_buffer_pool_size + key_buffer_size + (max_connections * per-Connection) ";
-infoprint " ".hr_bytes($myvar{'innodb_buffer_pool_size'})." + ".hr_bytes($myvar{'key_buffer_size'})." + (". $myvar{'max_connections'}." * ". hr_bytes($mycalc{'per_thread_buffers'}. " = ".hr_bytes($myvar{'innodb_buffer_pool_size'}+$myvar{'key_buffer_size'}+($mycalc{'per_thread_buffers'}*$myvar{'max_connections'}))." "; 
+infoprint " ".hr_bytes($myvar{'innodb_buffer_pool_size'})." + ".hr_bytes($myvar{'key_buffer_size'})." + (".hr_bytes($myvar{'max_connections'})." * ". hr_bytes($mycalc{'per_thread_buffers'}). " = ".hr_bytes($myvar{'innodb_buffer_pool_size'}+$myvar{'key_buffer_size'}+($mycalc{'per_thread_buffers'}*$myvar{'max_connections'}))." ";
 infoprint "------- WJR Total RAM Needed --------- " ;
 
     infoprint "P_S Max memory usage: " . hr_bytes_rnd( get_pf_memory() );
